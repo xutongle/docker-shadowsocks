@@ -6,7 +6,7 @@ MAINTAINER Tongle Xu <xutongle@gmail.com>
 
 ENV INSTALL_PREFIX="/usr" \
     PCRE_VERSION=8.40 \
-    VERSION=2.6.3 \
+    VERSION=3.0.3 \
     SERVER_ADDR=0.0.0.0 \
     SERVER_PORT=8888 \
     PASSWORD="123456" \
