@@ -24,7 +24,7 @@ WORKDIR /tmp
 RUN wget -c --no-check-certificate https://xutl.oss-cn-hangzhou.aliyuncs.com/docker-asset/shadowsocks/shadowsocks-libev-${VERSION}.tar.gz && \
     tar xzf shadowsocks-libev-${VERSION}.tar.gz && \
     cd shadowsocks-libev-${VERSION} && \
-    ./configure --disable-documentation --prefix=${INSTALL_PREFIX} && \
+    ./configure --with-openssl=/usr --with-openssl-lib=/lib/x86_64-linux-gnu/ --disable-documentation --prefix=${INSTALL_PREFIX} && \
     make && make install && \
     rm -rf /tmp/*
 
