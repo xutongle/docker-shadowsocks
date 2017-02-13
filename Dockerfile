@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM xutongle/dependent:latest
 
 ENV DEBIAN_FRONTEND noninteractive
 
