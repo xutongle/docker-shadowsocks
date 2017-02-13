@@ -35,15 +35,14 @@ RUN wget -c --no-check-certificate https://xutl.oss-cn-hangzhou.aliyuncs.com/doc
     tar xzf shadowsocks-libev-${VERSION}.tar.gz && \
     cd shadowsocks-libev-${VERSION} && \
     ./configure --help && \
-    ./configure --with-openssl=/usr --disable-documentation --prefix=${INSTALL_PREFIX} && \
+    ./configure --disable-documentation --prefix=${INSTALL_PREFIX} && \
     make && make install && \
     rm -rf /tmp/*
 
-ADD supervisord.conf /etc/supervisor/supervisord.conf
+ADD entrypoint.sh /root/entrypoint.sh
+RUN chmod 700 /root/entrypoint.sh
 
 EXPOSE 8888
 
 # Define the default command.
-CMD ["/bin/bash"]
-
-#CMD ["supervisord","-n"]
+ENTRYPOINT ["/root/entrypoint.sh"]
