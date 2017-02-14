@@ -19,18 +19,10 @@ ENV INSTALL_PREFIX="/usr" \
 ADD sources.list /etc/apt/sources.list
 
 RUN apt-get update && \
-    apt-get -y --no-install-recommends install gettext build-essential autoconf libtool libpcre3-dev libev-dev libudns-dev automake libmbedtls-dev
+    apt-get -y --no-install-recommends install gettext build-essential autoconf libtool libev-dev libudns-dev automake
 
 WORKDIR /tmp
 
-# Get the code, build and install
-RUN wget -c --no-check-certificate https://xutl.oss-cn-hangzhou.aliyuncs.com/docker-asset/shadowsocks/shadowsocks-libev-${SS_VERSION}.tar.gz && \
-    tar xzf shadowsocks-libev-${SS_VERSION}.tar.gz && \
-    cd shadowsocks-libev-${SS_VERSION} && \
-    ./configure --disable-documentation --prefix=${INSTALL_PREFIX} && \
-    make && make install && \
-    rm -rf /tmp/*
-    
 # install libsodium
 RUN wget -c --no-check-certificate https://github.com/jedisct1/libsodium/releases/download/${LIBSODIUM_VERSION}/libsodium-${LIBSODIUM_VERSION}.tar.gz && \
     tar xzf libsodium-${LIBSODIUM_VERSION}.tar.gz && \
