@@ -14,7 +14,7 @@ ENV INSTALL_PREFIX="/usr" \
     PASSWORD="123456" \
     METHOD="aes-256-cfb" \
     TIMEOUT=300 \
-    FAST_OPEN="" \
+    FAST_OPEN="--fast-open" \
     WORKERS=1
 
 ADD sources.list /etc/apt/sources.list
