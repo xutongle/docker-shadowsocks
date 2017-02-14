@@ -1,4 +1,4 @@
-FROM centos:7
+FROM debian:jessie
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -8,7 +8,7 @@ ENV INSTALL_PREFIX="/usr" \
     PCRE_VERSION=8.40 \
     LIBSODIUM_VERSION=1.0.11 \
     MBEDTLS_VERSION=2.4.0 \
-    VERSION=3.0.2 \
+    SS_VERSION=3.0.2 \
     SERVER_ADDR=0.0.0.0 \
     SERVER_PORT=8888 \
     PASSWORD="123456" \
@@ -16,9 +16,11 @@ ENV INSTALL_PREFIX="/usr" \
     TIMEOUT=300 \
     WORKERS=1
 
-ADD CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo
+ADD sources.list /etc/apt/sources.list
 
-RUN yum -y install gettext gcc autoconf libtool automake make udns-devel libev-devel wget git
+RUN apt-get update && \
+    apt-get -y --no-install-recommends install gettext build-essential autoconf automake libtool \
+    openssl libssl-dev zlib1g-dev libpcre3-dev libudns-dev libev-dev
 
 WORKDIR /tmp
 
@@ -46,9 +48,9 @@ RUN wget -c --no-check-certificate https://xutl.oss-cn-hangzhou.aliyuncs.com/doc
     rm -rf /tmp/*
 
 # Get the code, build and install
-RUN wget -c --no-check-certificate https://xutl.oss-cn-hangzhou.aliyuncs.com/docker-asset/shadowsocks/shadowsocks-libev-${VERSION}.tar.gz && \
-    tar xzf shadowsocks-libev-${VERSION}.tar.gz && \
-    cd shadowsocks-libev-${VERSION} && \
+RUN wget -c --no-check-certificate https://xutl.oss-cn-hangzhou.aliyuncs.com/docker-asset/shadowsocks/shadowsocks-libev-${SS_VERSION}.tar.gz && \
+    tar xzf shadowsocks-libev-${SS_VERSION}.tar.gz && \
+    cd shadowsocks-libev-${SS_VERSION} && \
     ./configure --disable-documentation --prefix=${INSTALL_PREFIX} && \
     make && make install && \
     rm -rf /tmp/*
