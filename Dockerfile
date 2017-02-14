@@ -19,7 +19,7 @@ ENV INSTALL_PREFIX="/usr" \
 ADD sources.list /etc/apt/sources.list
 
 RUN apt-get update && \
-    apt-get -y --no-install-recommends install gettext build-essential autoconf libtool libev-dev libudns-dev automake
+    apt-get -y --no-install-recommends install wget gettext build-essential autoconf libtool libev-dev libudns-dev automake
 
 WORKDIR /tmp
 
