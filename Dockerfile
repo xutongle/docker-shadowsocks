@@ -41,7 +41,7 @@ RUN wget -c --no-check-certificate https://tls.mbed.org/download/mbedtls-${MBEDT
 RUN wget -c --no-check-certificate https://xutl.oss-cn-hangzhou.aliyuncs.com/docker-asset/pcre/pcre-${PCRE_VERSION}.tar.gz && \
     tar xzf pcre-${PCRE_VERSION}.tar.gz && \
     cd pcre-${PCRE_VERSION} && \
-    ./configure --prefix=${INSTALL_PREFIX} --enable-utf8 && \
+    ./configure --prefix=/usr --enable-utf8 && \
     make && make install && \
     rm -rf /tmp/*
 
