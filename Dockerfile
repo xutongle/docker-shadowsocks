@@ -58,7 +58,7 @@ RUN wget -c --no-check-certificate https://xutl.oss-cn-hangzhou.aliyuncs.com/doc
 ADD entrypoint.sh /root/entrypoint.sh
 RUN chmod 700 /root/entrypoint.sh
 
-EXPOSE 8888/tcp 8888/udp
+EXPOSE ${SERVER_PORT}/tcp ${SERVER_PORT}/udp
 
 # Define the default command.
 ENTRYPOINT ["/root/entrypoint.sh"]
