@@ -17,7 +17,8 @@ RUN sh -c 'printf "deb http://httpredir.debian.org/debian jessie-backports main"
 ADD entrypoint.sh /root/entrypoint.sh
 RUN chmod 700 /root/entrypoint.sh
 
-EXPOSE 1080/tcp 1080/udp
+EXPOSE 1080/tcp
+EXPOSE 1080/udp
 
 # Define the default command.
 ENTRYPOINT ["/root/entrypoint.sh"]
