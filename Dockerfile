@@ -9,13 +9,13 @@ ENV PASSWORD="123456" \
     TIMEOUT=300 \
     FAST_OPEN="--fast-open"
 
+ADD entrypoint.sh /root/entrypoint.sh
+
 RUN sh -c 'printf "deb http://httpredir.debian.org/debian jessie-backports main" > /etc/apt/sources.list.d/jessie-backports.list' \
     && apt update \
     && apt -t jessie-backports install -y shadowsocks-libev \
-    && rm -rf /var/lib/apt/lists/*
-
-ADD entrypoint.sh /root/entrypoint.sh
-RUN chmod 700 /root/entrypoint.sh
+    && rm -rf /var/lib/apt/lists/* \
+    && chmod 700 /root/entrypoint.sh
 
 EXPOSE 1080/tcp
 EXPOSE 1080/udp
