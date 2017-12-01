@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y gettext build-essential autoconf libtoo
     libc-ares-dev automake xmlto curl --no-install-recommends && rm -r /var/lib/apt/lists/*
 
 ENV SS_DIR=/usr/local \
-    SS_VERSION=3.1.0 \
+    SS_VERSION=3.1.1 \
     MBEDTLS_VER=2.6.0 \
     LIBSODIUM_VER=1.0.15 \
     SS_PASSWORD="123456" \
