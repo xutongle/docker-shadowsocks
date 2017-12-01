@@ -4,8 +4,10 @@ ENV DEBIAN_FRONTEND noninteractive
 
 MAINTAINER XUTONGLE <xutongle@gmail.com>
 
+ADD entrypoint.sh /root/entrypoint.sh
+
 RUN apt-get update && apt-get install -y gettext build-essential autoconf libtool libpcre3-dev asciidoc libev-dev \
-    libc-ares-dev automake xmlto curl --no-install-recommends && rm -r /var/lib/apt/lists/*
+    libc-ares-dev automake xmlto curl --no-install-recommends && rm -r /var/lib/apt/lists/* && chmod 700 /root/entrypoint.sh
 
 ARG SS_VERSION=3.1.1
 
@@ -17,8 +19,6 @@ ENV SS_DIR=/usr/local \
     SS_METHOD="aes-256-cfb" \
     SS_TIMEOUT=300 \
     SS_FAST_OPEN="--fast-open"
-
-ADD entrypoint.sh /root/entrypoint.sh
 
 RUN cd /usr/local/src && curl -k -o libsodium-${LIBSODIUM_VER}.tar.gz https://download.libsodium.org/libsodium/releases/libsodium-${LIBSODIUM_VER}.tar.gz && \
     tar xvf libsodium-${LIBSODIUM_VER}.tar.gz && rm -rf libsodium-${LIBSODIUM_VER}.tar.gz && cd libsodium-${LIBSODIUM_VER} && \
