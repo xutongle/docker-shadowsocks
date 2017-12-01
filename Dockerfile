@@ -4,9 +4,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 MAINTAINER XUTONGLE <xutongle@gmail.com>
 
-RUN sed -i 's#deb.debian.org#mirrors.aliyun.com#' /etc/apt/sources.list && \
-    sed -i 's#security.debian.org#mirrors.aliyun.com/debian-security#' /etc/apt/sources.list && \
-    apt-get update && apt-get install -y gettext build-essential autoconf libtool libpcre3-dev asciidoc libev-dev \
+RUN apt-get update && apt-get install -y gettext build-essential autoconf libtool libpcre3-dev asciidoc libev-dev \
     libc-ares-dev automake xmlto curl --no-install-recommends && rm -r /var/lib/apt/lists/*
 
 ENV SS_DIR=/usr/local \
