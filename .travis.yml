@@ -24,10 +24,10 @@ before_script:
 before_script:
   - env | sort
   - cd "$VERSION"
-  - image="xutongle/shadowsocks-libev:${SS_VERSION}" --build-arg SS_VERSION=${SS_VERSION}
+  - image="xutongle/shadowsocks-libev:${SS_VERSION}"
 
 script:
-  - travis_retry docker build -t "$image" .
+  - travis_retry docker build --build-arg SS_VERSION=${SS_VERSION} -t "$image" .
 
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
