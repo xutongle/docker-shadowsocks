@@ -32,7 +32,7 @@ RUN cd /usr/local/src && curl -k -o mbedtls-${MBEDTLS_VER}-gpl.tgz https://tls.m
 
 RUN cd /usr/local/src && curl -L -k -o shadowsocks-libev-${SS_VERSION}.tar.gz https://github.com/shadowsocks/shadowsocks-libev/releases/download/v${SS_VERSION}/shadowsocks-libev-${SS_VERSION}.tar.gz && \
     tar zxf shadowsocks-libev-${SS_VERSION}.tar.gz && rm -rf shadowsocks-libev-${SS_VERSION}.tar.gz && cd shadowsocks-libev-${SS_VERSION}/ && \
-    ./configure --disable-documentation && make && make install && rm -rf /usr/local/src/shadowsocks-libev-${SS_VERSION}
+    ./configure --prefix=/usr --disable-documentation && make && make install && rm -rf /usr/local/src/shadowsocks-libev-${SS_VERSION}
 
 # Define the default command.
 ENTRYPOINT ["/root/entrypoint.sh"]
