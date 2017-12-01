@@ -7,8 +7,9 @@ MAINTAINER XUTONGLE <xutongle@gmail.com>
 RUN apt-get update && apt-get install -y gettext build-essential autoconf libtool libpcre3-dev asciidoc libev-dev \
     libc-ares-dev automake xmlto curl --no-install-recommends && rm -r /var/lib/apt/lists/*
 
+ARG SS_VERSION=3.1.1
+
 ENV SS_DIR=/usr/local \
-    SS_VERSION=3.1.1 \
     MBEDTLS_VER=2.6.0 \
     LIBSODIUM_VER=1.0.15 \
     SS_PASSWORD="123456" \

@@ -24,7 +24,7 @@ before_script:
 before_script:
   - env | sort
   - cd "$VERSION"
-  - image="xutongle/shadowsocks-libev:${SS_VERSION}"
+  - image="xutongle/shadowsocks-libev:${SS_VERSION}" --build-arg SS_VERSION=${SS_VERSION}
 
 script:
   - travis_retry docker build -t "$image" .
