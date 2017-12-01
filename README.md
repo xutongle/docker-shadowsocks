@@ -1,5 +1,7 @@
 # docker-shadowsocks
 
+[![Build Status](https://travis-ci.org/xutongle/docker-shadowsocks.svg?branch=master)](https://travis-ci.org/xutongle/docker-shadowsocks)
+
 #### Environment:
 
 | Environment | Default value |
