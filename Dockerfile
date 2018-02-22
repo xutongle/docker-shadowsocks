@@ -9,7 +9,7 @@ ADD entrypoint.sh /root/entrypoint.sh
 RUN apt-get update && apt-get install -y gettext build-essential autoconf libtool libpcre3-dev asciidoc libev-dev \
     libc-ares-dev automake xmlto curl --no-install-recommends && rm -r /var/lib/apt/lists/* && chmod 700 /root/entrypoint.sh
 
-ARG SS_VERSION=3.1.1
+ARG SS_VERSION=3.1.3
 
 ENV SS_DIR=/usr/local \
     MBEDTLS_VER=2.6.0 \
